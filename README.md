@@ -18,7 +18,7 @@ chmod 775 *.sh
 # And start using the API.
 
 # Also we can now run the client script in another terminal:
-# CLIENT script will execute client simulation creation of 10 payments.
+# CLIENT script will execute client simulation - creation of 10 payments.
 ./client.sh 
 # In real life scenario we would probably create CLI tool using some of the existing tools, so that customer can use it via command line.
 
