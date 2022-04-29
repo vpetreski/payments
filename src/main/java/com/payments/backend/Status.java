@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 public enum Status {
     CREATED, SENT, ACCEPTED, REJECTED;
+
     @JsonCreator
     public static Status setValue(String key) {
         return Arrays.stream(Status.values())
