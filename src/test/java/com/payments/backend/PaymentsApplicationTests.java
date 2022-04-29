@@ -38,7 +38,7 @@ class PaymentsApplicationTests {
         Payment createdPayment = paymentService.createPayment(paymentRequest);
 
         assertThat(createdPayment.getId()).isNotNull();
-        assertThat(createdPayment.getStatus()).isEqualByComparingTo(Status.CREATED);
+        assertThat(createdPayment.getStatus()).isEqualByComparingTo(Payment.Status.CREATED);
 
         assertThat(paymentService.getPayment(createdPayment.getId()).getId()).isEqualTo(createdPayment.getId());
     }

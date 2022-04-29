@@ -19,6 +19,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Payment implements Serializable {
 
+    public enum Status {
+        CREATED, SENT, ACCEPTED, REJECTED;
+    }
+
     private @Id
     @GeneratedValue Long id;
     @NotBlank(message = "Key is mandatory")

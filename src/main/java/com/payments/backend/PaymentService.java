@@ -24,7 +24,7 @@ public class PaymentService {
         }
 
         log.info("Creating Payment {}", newPayment);
-        newPayment.setStatus(Status.CREATED);
+        newPayment.setStatus(Payment.Status.CREATED);
         redisTemplate.opsForValue().set(String.valueOf(newPayment.getKey()), newPayment);
         return paymentRepository.save(newPayment);
     }

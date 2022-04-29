@@ -32,7 +32,7 @@ public class PaymentsClient {
             paymentRequest.setSenderAccountNumber("765543322");
             paymentRequest.setReceiverAccountType("CHECKING");
             paymentRequest.setReceiverAccountNumber("4932867423");
-            paymentRequest.setStatus(Status.CREATED);
+            paymentRequest.setStatus(Payment.Status.CREATED);
 
             Request request = new Request.Builder()
                 .url("http://localhost:8080/payments")
