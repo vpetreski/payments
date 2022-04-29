@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/payments
+    username: payments
+    password: payments
+  jpa:
+    hibernate:
+      ddl-auto: update
+  flyway:
+    enabled: false
+  redis:
+    host: localhost
+springdoc:
+  api-docs:
+    path: /openapi
+  swagger-ui:
+    path: /swagger
