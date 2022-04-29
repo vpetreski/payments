@@ -41,7 +41,7 @@ DevOps is needed for properly scaling the infrastructure, stress testing, analyz
 Additionally, client is sending the key with each request uniquely representing the transaction. If client sends the same key / request again, before processing - we are first checking existence in the queue and also in the DB. Only if it's not there, we will continue normal workflow processing, otherwise return already existing object. This way we make sure not to process single transaction more than once.
 
 ## Notes
-- Redis was used instead of Kafka for simplicity purposes.
+- Redis was used instead of Kafka for simplicity purposes
 - In real life project we would use migrations with Flyway
 - In real life scenario we would better organize requests and data structures, probably in multiple DB tables
 - Validation could be improved
