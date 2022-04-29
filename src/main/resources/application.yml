@@ -14,4 +14,4 @@ springdoc:
   api-docs:
     path: /openapi
   swagger-ui:
-    path: /swagger
+    path: /doc

@@ -10,5 +10,3 @@ mvn package -DskipTests
 
 # Start containers
 docker-compose up
-
-# TODO - call the client (curl example, client example, but outside of this script...)

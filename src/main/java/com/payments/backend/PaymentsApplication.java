@@ -15,8 +15,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 public class PaymentsApplication {
 
     @Bean
-    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory connectionFactory) {
-        RedisTemplate<String, Object> template = new RedisTemplate<>();
+    public RedisTemplate<String, Payment> redisTemplate(RedisConnectionFactory connectionFactory) {
+        RedisTemplate<String, Payment> template = new RedisTemplate<>();
         template.setConnectionFactory(connectionFactory);
         return template;
     }

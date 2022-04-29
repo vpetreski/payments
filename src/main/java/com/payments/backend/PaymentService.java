@@ -12,20 +12,22 @@ import org.springframework.stereotype.Service;
 public class PaymentService {
 
     private final PaymentRepository paymentRepository;
-    private final RedisTemplate<String, Object> redisTemplate;
+    private final RedisTemplate<String, Payment> redisTemplate;
 
     public Payment createPayment(Payment newPayment) {
-        Payment existingPayment = paymentRepository.findByKey(newPayment.getKey());
+        Payment existingPayment = redisTemplate.opsForValue().get(newPayment.getKey());
+        if (existingPayment == null) {
+            existingPayment = paymentRepository.findByKey(newPayment.getKey());
+        }
         if (existingPayment != null) {
-            log.info("Will NOT create Payment, because it already exists {}", existingPayment);
+            log.info("Will NOT create the Payment, because it already exists {}", existingPayment);
             return existingPayment;
         }
 
         log.info("Creating Payment {}", newPayment);
         newPayment.setStatus(Status.CREATED);
-        Payment createdPayment = paymentRepository.save(newPayment);
-        redisTemplate.opsForValue().set(String.valueOf(createdPayment.getId()), createdPayment);
-        return createdPayment;
+        redisTemplate.opsForValue().set(String.valueOf(newPayment.getKey()), newPayment);
+        return paymentRepository.save(newPayment);
     }
 
     public Payment getPayment(Long id) {
