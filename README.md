@@ -36,7 +36,7 @@ Then, once we have the request safe, we can independently scale worker compute b
 
 This approach would both help us to 1) scale properly and 2) to make sure that even if some worker node fails, message will stay in the queue until other worker processes it correctly, with all necessary steps in the pipeline.
 
-DevOps is needed for properly scaling the infrastructure, stress testing, analyzing existing compute, DB and network bottlenecks and limits, monitoring, logging and then based on estimated number of requests scale properly and test it. Details of this process depends on the existing architecture / infra of the system.
+DevOps is needed for properly scaling the infrastructure, stress testing, analyzing existing compute, DB and network bottlenecks and limits, monitoring, logging and then based on estimated number of requests scale properly and test it. Details of this process depend on the existing architecture / infra of the system.
 
 Additionally, client is sending the key with each request uniquely representing the transaction. If client sends the same key / request again, before processing - we are checking existence in the queue and also in the DB first. Only if it's not there, we will continue normal workflow processing, otherwise return already existing object. This way we make sure not to process single transaction more than once.
 
