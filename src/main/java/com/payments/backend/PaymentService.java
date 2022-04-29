@@ -15,13 +15,12 @@ public class PaymentService {
     private final RedisTemplate<String, Payment> redisTemplate;
 
     public Payment createPayment(Payment newPayment) {
-        Payment existingPayment = redisTemplate.opsForValue().get(newPayment.getKey());
-        if (existingPayment == null) {
-            existingPayment = paymentRepository.findByKey(newPayment.getKey());
-        }
-        if (existingPayment != null) {
-            log.info("Will NOT create the Payment, because it already exists {}", existingPayment);
-            return existingPayment;
+        Payment queuePayment = redisTemplate.opsForValue().get(newPayment.getKey());
+        Payment dbPayment = paymentRepository.findByKey(newPayment.getKey());
+
+        if (queuePayment != null || dbPayment != null) {
+            log.info("Will NOT create the Payment, because it already exists!");
+            return dbPayment != null ? dbPayment : queuePayment;
         }
 
         log.info("Creating Payment {}", newPayment);
