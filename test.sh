@@ -10,6 +10,3 @@ docker-compose up -d db redis
 # Run tests via Maven
 mvn clean
 mvn test
-
-# Run the client
-mvn exec:java -Dexec.mainClass="com.payments.backend.PaymentsClient"

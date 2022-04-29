@@ -15,11 +15,14 @@ chmod 775 *.sh
 # RUN script will do a Maven build and run Docker containers
 ./run.sh
 # At this point you can open: http://localhost:8080/doc
-# And start using the API
+# And start using the API.
+
+# Also we can now run the client script in another terminal:
+# CLIENT script will execute client simulation creation of 10 payments.
+./client.sh 
+# In real life scenario we would probably create CLI tool using some of the existing tools, so that customer can use it via command line.
 
 # TEST script will run existing tests via Maven
-# Script will also execute client simulation creation of 10 payments.
-# In real life scenario we would probably create CLI tool using some of the existing tools, so that customer can use it via command line.
 ./test.sh
 
 # LOCAL script will bring necessary Docker services for local development
@@ -27,7 +30,7 @@ chmod 775 *.sh
 ```
 
 ## Architecture
-In the real life, production, scenario system would be architected to first accept incoming request in a queue and return accepted response to the client immediately.
+In the real life, production, scenario - system would be architected to first accept incoming request in a queue and return accepted response to the client immediately.
 
 Then, once we have the request safe, we can independently scale worker compute based on the number of messages in the queue.
 
