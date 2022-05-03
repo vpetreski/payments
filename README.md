@@ -42,6 +42,7 @@ Additionally, client is sending the key with each request uniquely representing 
 
 ## Notes
 - Redis was used instead of Kafka for simplicity purposes
+- In real life case messages would be streamed to Kafka and then read from there for further processing.
 - In real life project we would use migrations with Flyway
 - In real life scenario we would better organize requests and data structures, probably in multiple DB tables
 - Validation could be improved
