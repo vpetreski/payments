@@ -30,11 +30,11 @@ chmod 775 *.sh
 ```
 
 ## Architecture
-In the real life, production, scenario - system would be architected to first accept incoming request in a streaming broker and return accepted response to the client immediately.
+In the real life, production, scenario - system would be architected to first accept incoming request in a message / streaming broker and return accepted response to the client immediately.
 
-Then, once we have the request safe, we can independently scale worker compute based on the streaming load.
+Then, once we have the request safe, we can independently scale worker compute based on the broker load.
 
-This approach would both help us to 1) scale properly and 2) to make sure that even if some worker node fails, message will stay in the streaming broker for other worker to processes it correctly, with all necessary steps in the pipeline.
+This approach would both help us to 1) scale properly and 2) to make sure that even if some worker node fails, message will stay in the broker for other worker to processes it correctly, with all necessary steps in the pipeline.
 
 DevOps is needed for properly scaling the infrastructure, stress testing, analyzing existing compute, DB and network bottlenecks and limits, monitoring, logging and then based on estimated number of requests scale properly and test it. Details of this process depend on the existing architecture / infra of the system.
 
@@ -42,7 +42,7 @@ Additionally, client is sending the key with each request uniquely representing 
 
 ## Notes
 - Redis was used instead of Kafka for simplicity purposes
-- In real life case messages would be streamed to Kafka and then read from there for further processing.
+- In real life case messages would be sent to Kafka and then read from there for further processing.
 - In real life project we would use migrations with Flyway
 - In real life scenario we would better organize requests and data structures, probably in multiple DB tables
 - Validation could be improved
