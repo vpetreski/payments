@@ -32,7 +32,7 @@ chmod 775 *.sh
 ## Architecture
 In the real life, production, scenario - system would be architected to first accept incoming requests in a message / streaming broker and return accepted response to the client immediately.
 
-Then, once we have the requests safe, we can independently scale worker compute based on the broker load.
+Then, once we have the requests safe, we can independently scale worker compute based on the broker load, to process them.
 
 This approach would both help us to 1) scale properly and 2) to make sure that even if some worker node fails, messages will stay in the broker for other worker to processes them correctly, with all necessary steps in the pipeline.
 
