@@ -27,6 +27,10 @@ chmod 775 *.sh
 
 # LOCAL script will bring necessary Docker services for local development
 ./local.sh
+
+# Build & Push to Docker Hub
+# https://hub.docker.com/r/vanjapetreski/spring-boot-payments
+./push
 ```
 
 ## Architecture

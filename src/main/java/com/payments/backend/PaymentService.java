@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @Service
@@ -14,6 +15,7 @@ public class PaymentService {
     private final PaymentRepository paymentRepository;
     private final RedisTemplate<String, Payment> redisTemplate;
 
+    @Transactional
     public Payment createPayment(Payment newPayment) {
         Payment queuePayment = redisTemplate.opsForValue().get(newPayment.getKey());
         Payment dbPayment = paymentRepository.findByKey(newPayment.getKey());
