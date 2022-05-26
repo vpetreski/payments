@@ -31,6 +31,10 @@ chmod 775 *.sh
 # Build & Push to Docker Hub
 # https://hub.docker.com/r/vanjapetreski/spring-boot-payments
 ./push
+
+# If you have Minikube locally
+./k8s-start
+./k8s-cleanup
 ```
 
 ## Architecture

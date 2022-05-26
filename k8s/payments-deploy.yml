@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payments-deploy
+  labels:
+    app: payments-app
+    name: payments-deploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: payments-app
+      name: payments-pod
+  template:
+    metadata:
+      name: payments-pod
+      labels:
+        app: payments-app
+        name: payments-pod
+    spec:
+      containers:
+        - name: payments-app
+          image: vanjapetreski/spring-boot-payments:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://db:5432/payments"
+            - name: SPRING_REDIS_HOST
+              value: "redis"
